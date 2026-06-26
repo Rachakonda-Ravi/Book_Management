@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from "./api";
 import toast from 'react-hot-toast';
 import { useTheme } from './ThemeContext';
 

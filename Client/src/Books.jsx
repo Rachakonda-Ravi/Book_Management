@@ -66,7 +66,7 @@ const Books = () => {
             page,
             page_size: pageSize,
             sort_by: sortBy,
-            order: sortOrder,
+            order: sortOrder,   
             search,
             author: authorFilter,
             publisher: publisherFilter,
@@ -77,10 +77,9 @@ const Books = () => {
             ...(maxDate && { max_date: maxDate })
         });
 
-        const url = `${import.meta.env.VITE_API_URL}?${params.toString()}`;
         console.log('Fetching from:', url);
         
-        axios.get(url)
+        axios.get(`${import.meta.env.VITE_API_URL}`, { params })
             .then(res => {
                 console.log('Response:', res.data);
                 if (res.data && res.data.books) {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import api from "./api";
+import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useTheme } from './ThemeContext';
 
@@ -77,9 +77,10 @@ const Books = () => {
             ...(maxDate && { max_date: maxDate })
         });
 
+        const url = `${import.meta.env.VITE_API_URL}?${params.toString()}`;
         console.log('Fetching from:', url);
         
-        axios.get(`${import.meta.env.VITE_API_URL}`, { params })
+        axios.get(url)
             .then(res => {
                 console.log('Response:', res.data);
                 if (res.data && res.data.books) {
